@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import styles from './ProgramCard.module.css'
 import { ProgramWithStats } from '@/lib/types'
@@ -11,10 +10,15 @@ interface ProgramCardProps {
 export default function ProgramCard({ program }: ProgramCardProps) {
     const isCharity = program.category === 'charity'
 
-    // Safely access the first image from the program_images array
-    const mainImage = program.program_images?.[0]?.image_url ||
-        (program.program_images && program.program_images.length > 0 ? program.program_images[0].image_url : null) ||
-        '/images/placeholder.jpg'
+    // Safely access the first image from the program_images array  
+    let mainImage = '/images/placeholder.jpg'
+
+    if (program.program_images && Array.isArray(program.program_images) && program.program_images.length > 0) {
+        const imageUrl = program.program_images[0].image_url
+        if (imageUrl) {
+            mainImage = imageUrl
+        }
+    }
 
     const amountRaised = program.amount_raised || 0
     const totalCost = program.total_cost || 0
@@ -24,12 +28,12 @@ export default function ProgramCard({ program }: ProgramCardProps) {
         <Link href={`/programs/${program.id}`} className={styles.cardLink}>
             <div className={styles.card}>
                 <div className={styles.imageWrapper}>
-                    <Image
+                    {/* Using regular img tag for better compatibility */}
+                    <img
                         src={mainImage}
                         alt={program.title}
-                        width={400}
-                        height={250}
                         className={styles.image}
+                        style={{ width: '100%', height: '250px', objectFit: 'cover' }}
                     />
                     <div className={styles.categoryBadge}>
                         {program.category}
