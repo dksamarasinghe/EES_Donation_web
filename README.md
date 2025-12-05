@@ -169,4 +169,4 @@ For issues or questions:
 
 ---
 
-Made with ❤️ by the EES Society Tech Team
+Made with ❤️ by dksamarasinghe.com
