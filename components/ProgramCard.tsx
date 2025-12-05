@@ -10,7 +10,11 @@ interface ProgramCardProps {
 
 export default function ProgramCard({ program }: ProgramCardProps) {
     const isCharity = program.category === 'charity'
-    const mainImage = program.program_images[0]?.image_url || '/images/placeholder.jpg'
+
+    // Safely access the first image from the program_images array
+    const mainImage = program.program_images?.[0]?.image_url ||
+        (program.program_images && program.program_images.length > 0 ? program.program_images[0].image_url : null) ||
+        '/images/placeholder.jpg'
 
     const amountRaised = program.amount_raised || 0
     const totalCost = program.total_cost || 0
