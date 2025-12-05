@@ -6,9 +6,18 @@ import { supabase } from '@/lib/supabase'
 import { uploadImage } from '@/lib/utils'
 import styles from './page.module.css'
 
+interface TeamMember {
+    id: string
+    name: string
+    position: string
+    year: string
+    display_order: number
+    image_url: string | null
+}
+
 export default function ManageTeamPage() {
     const router = useRouter()
-    const [members, setMembers] = useState<any[]>([])
+    const [members, setMembers] = useState<TeamMember[]>([])
     const [loading, setLoading] = useState(true)
     const [showForm, setShowForm] = useState(false)
     const [editingId, setEditingId] = useState<string | null>(null)
@@ -47,8 +56,9 @@ export default function ManageTeamPage() {
         if (selectedImage) {
             try {
                 imageUrl = await uploadImage('team-photos', selectedImage)
-            } catch (error: any) {
-                alert('Failed to upload image: ' + error.message)
+            } catch (error) {
+                const errorMessage = error instanceof Error ? error.message : 'Unknown error'
+                alert('Failed to upload image: ' + errorMessage)
                 return
             }
         }
@@ -116,7 +126,7 @@ export default function ManageTeamPage() {
         fetchMembers()
     }
 
-    function handleEdit(member: any) {
+    function handleEdit(member: TeamMember) {
         setFormData({
             name: member.name,
             position: member.position,

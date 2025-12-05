@@ -5,6 +5,11 @@ import { useRouter, useParams } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
 import styles from './page.module.css'
 
+interface Program {
+    id: string
+    title: string
+}
+
 export default function EditExpensePage() {
     const router = useRouter()
     const params = useParams()
@@ -13,7 +18,7 @@ export default function EditExpensePage() {
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState('')
     const [fetchingExpense, setFetchingExpense] = useState(true)
-    const [programs, setPrograms] = useState<any[]>([])
+    const [programs, setPrograms] = useState<Program[]>([])
 
     const [formData, setFormData] = useState({
         program_id: '',

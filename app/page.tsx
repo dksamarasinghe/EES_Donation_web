@@ -132,7 +132,7 @@ export default async function HomePage() {
                     <div className={styles.programsHeader}>
                         <h2 className={styles.sectionTitle}>Our Programs</h2>
                         <p className={styles.programsSubtitle}>
-                            Discover the impactful initiatives we've undertaken to drive innovation and make a difference in our community
+                            Discover the impactful initiatives we&apos;ve undertaken to drive innovation and make a difference in our community
                         </p>
                     </div>
 

@@ -81,8 +81,9 @@ export default function NewProgramPage() {
 
             alert('Program created successfully!')
             router.push('/admin/programs')
-        } catch (err: any) {
-            setError('Failed to create program: ' + err.message)
+        } catch (err) {
+            const errorMessage = err instanceof Error ? err.message : 'Unknown error'
+            setError('Failed to create program: ' + errorMessage)
             console.error('Error creating program:', err)
             setLoading(false)
         }

@@ -57,31 +57,36 @@ export default function ProgramRequirementsPage() {
         const { data } = await supabase
             .from('goods_items')
             .select(`
-        id,
-        name,
-        donation_categories (name)
-      `)
-            .order('name')
+                id,
+                name,
+                donation_categories (
+                    name
+                )
+            `)
 
-        const items = data?.map(item => ({
+        const formattedItems: GoodsItem[] = data?.map((item: any) => ({
             id: item.id,
             name: item.name,
-            category: item.donation_categories?.name || ''
+            category: item.donation_categories?.name || 'Unknown'
         })) || []
 
-        setAvailableItems(items)
+        setAvailableItems(formattedItems)
     }
 
     async function fetchRequirements() {
         const { data, error } = await supabase
             .from('program_goods_requirements')
             .select(`
-        *,
-        goods_items (
-          name,
-          donation_categories (name)
-        )
-      `)
+                id,
+                goods_item_id,
+                required_quantity,
+                goods_items (
+                    name,
+                    donation_categories (
+                        name
+                    )
+                )
+            `)
             .eq('program_id', programId)
 
         if (error) {
@@ -90,7 +95,20 @@ export default function ProgramRequirementsPage() {
             return
         }
 
-        setRequirements(data || [])
+        // Type cast the response to match our interface
+        const typedData = (data || []).map((item: any) => ({
+            id: item.id,
+            goods_item_id: item.goods_item_id,
+            required_quantity: item.required_quantity,
+            goods_items: {
+                name: item.goods_items.name,
+                donation_categories: {
+                    name: item.goods_items.donation_categories.name
+                }
+            }
+        }))
+
+        setRequirements(typedData)
         setLoading(false)
     }
 

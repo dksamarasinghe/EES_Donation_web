@@ -5,12 +5,27 @@ import { useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
 import styles from './page.module.css'
 
+interface Program {
+    id: string
+    title: string
+}
+
+interface Expense {
+    id: string
+    program_id: string
+    description: string
+    amount: number
+    expense_date: string
+    invoice_url: string | null
+    programs: { title: string }
+}
+
 export default function ManageExpensesPage() {
     const router = useRouter()
-    const [expenses, setExpenses] = useState<any[]>([])
+    const [expenses, setExpenses] = useState<Expense[]>([])
     const [loading, setLoading] = useState(true)
     const [showForm, setShowForm] = useState(false)
-    const [programs, setPrograms] = useState<any[]>([])
+    const [programs, setPrograms] = useState<Program[]>([])
 
     const [formData, setFormData] = useState({
         program_id: '',

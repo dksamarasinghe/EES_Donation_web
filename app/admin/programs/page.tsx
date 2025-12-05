@@ -5,9 +5,20 @@ import { useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
 import styles from './page.module.css'
 
+interface Program {
+    id: string
+    title: string
+    category: string
+    status: string
+    date: string
+    location: string
+    description: string
+    created_at: string
+}
+
 export default function ManageProgramsPage() {
     const router = useRouter()
-    const [programs, setPrograms] = useState<any[]>([])
+    const [programs, setPrograms] = useState<Program[]>([])
     const [loading, setLoading] = useState(true)
     const [filter, setFilter] = useState('all')
 

@@ -180,7 +180,16 @@ export default function DonatePage() {
         }
 
         // Create donation with Pending status
-        const donationData: any = {
+        const donationData: {
+            donor_name: string
+            donor_address: string
+            donor_contact: string
+            program_id: string
+            category_id: string
+            donation_type: 'money' | 'goods'
+            amount: number | null
+            status: string
+        } = {
             donor_name: formData.donor_name,
             donor_address: formData.donor_address,
             donor_contact: formData.donor_contact,

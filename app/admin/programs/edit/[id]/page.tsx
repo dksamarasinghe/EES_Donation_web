@@ -99,8 +99,9 @@ export default function EditProgramPage() {
             // Update local state
             setExistingImages(existingImages.filter(img => img.id !== imageId))
             alert('Image deleted successfully!')
-        } catch (err: any) {
-            alert('Failed to delete image: ' + err.message)
+        } catch (err) {
+            const errorMessage = err instanceof Error ? err.message : 'Unknown error'
+            alert('Failed to delete image: ' + errorMessage)
         }
     }
 
@@ -178,8 +179,9 @@ export default function EditProgramPage() {
 
             alert('Program updated successfully!')
             router.push('/admin/programs')
-        } catch (err: any) {
-            setError('Failed to update program: ' + err.message)
+        } catch (err) {
+            const errorMessage = err instanceof Error ? err.message : 'Unknown error'
+            setError('Failed to update program: ' + errorMessage)
             console.error('Error updating program:', err)
             setLoading(false)
         }

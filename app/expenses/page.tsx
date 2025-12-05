@@ -7,11 +7,16 @@ import { ExpenseWithProgram } from '@/lib/types'
 import { formatCurrency, formatDate } from '@/lib/utils'
 import Image from 'next/image'
 
+interface Program {
+    id: string
+    title: string
+}
+
 export default function ExpensesPage() {
     const [expenses, setExpenses] = useState<ExpenseWithProgram[]>([])
     const [loading, setLoading] = useState(true)
     const [selectedProgram, setSelectedProgram] = useState<string>('all')
-    const [programs, setPrograms] = useState<any[]>([])
+    const [programs, setPrograms] = useState<Program[]>([])
 
     useEffect(() => {
         fetchPrograms()
