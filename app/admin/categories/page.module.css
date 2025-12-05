@@ -1,0 +1,136 @@
+.categoriesPage {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+.categoriesPage h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-text-primary);
+}
+
+.subtitle {
+    color: var(--color-text-secondary);
+    font-size: 1.125rem;
+    margin-bottom: 2rem;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.categoryList {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.categoryCard {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    background-color: var(--color-bg-secondary);
+}
+
+.categoryHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.categoryTitle {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1;
+}
+
+.categoryTitle h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    color: var(--color-text-primary);
+}
+
+.categoryActions {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.goodsSection {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-border);
+}
+
+.goodsSection h4 {
+    margin: 0 0 1rem 0;
+    font-size: 1rem;
+    color: var(--color-text-secondary);
+}
+
+.addItemForm {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.itemsList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.itemRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    gap: 1rem;
+}
+
+.itemName {
+    flex: 2;
+    font-weight: 500;
+    color: var(--color-text-primary);
+}
+
+.itemQty {
+    flex: 1;
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+}
+
+.itemQty strong {
+    color: var(--color-accent-blue);
+}
+
+@media (max-width: 768px) {
+    .categoriesPage h1 {
+        font-size: 2rem;
+    }
+
+    .categoryHeader {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .categoryActions {
+        width: 100%;
+    }
+
+    .addItemForm {
+        flex-direction: column;
+    }
+
+    .itemRow {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

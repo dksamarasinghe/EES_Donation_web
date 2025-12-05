@@ -1,0 +1,104 @@
+.managePage {
+    max-width: 1200px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+.filters {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.loading {
+    display: flex;
+    justify-content: center;
+    padding: 4rem 0;
+}
+
+.empty {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: var(--color-text-muted);
+    font-size: 1.125rem;
+}
+
+.programsList {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.programCard {
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+    transition: all var(--transition-fast);
+}
+
+.programCard:hover {
+    border-color: var(--color-accent-blue);
+    box-shadow: var(--shadow-lg);
+}
+
+.programInfo {
+    flex: 1;
+}
+
+.programInfo h3 {
+    font-size: 1.5rem;
+    margin: 0 0 0.75rem 0;
+    color: var(--color-text-primary);
+}
+
+.metadata {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.description {
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+    .programCard {
+        flex-direction: column;
+    }
+
+    .actions {
+        width: 100%;
+        justify-content: stretch;
+    }
+
+    .actions button {
+        flex: 1;
+    }
+}
