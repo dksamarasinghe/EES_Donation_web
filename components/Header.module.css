@@ -28,6 +28,7 @@
     object-fit: contain;
 }
 
+/* Desktop Navigation */
 .nav {
     display: flex;
     align-items: center;
@@ -93,6 +94,7 @@
     border: none;
     cursor: pointer;
     padding: 0.5rem;
+    z-index: 1001;
 }
 
 .menuToggle span {
@@ -102,28 +104,128 @@
     transition: all var(--transition-fast);
 }
 
+/* Mobile Overlay */
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 998;
+    backdrop-filter: blur(4px);
+}
+
+/* Mobile Side Drawer */
+.mobileMenu {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    background-color: var(--color-bg-secondary);
+    z-index: 999;
+    transition: right 0.3s ease-in-out;
+    box-shadow: -4px 0 24px rgba(0, 0, 0, 0.3);
+    overflow-y: auto;
+}
+
+.mobileMenuOpen {
+    right: 0;
+}
+
+.mobileMenuHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 1.5rem;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.mobileMenuHeader h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+.closeBtn {
+    background: none;
+    border: none;
+    color: var(--color-text-primary);
+    font-size: 1.75rem;
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+    line-height: 1;
+    transition: color var(--transition-fast);
+}
+
+.closeBtn:hover {
+    color: var(--color-accent-red);
+}
+
+.mobileNav {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 0;
+}
+
+.mobileNavLink {
+    color: var(--color-text-secondary);
+    font-weight: 500;
+    font-size: 1rem;
+    padding: 1rem 1.5rem;
+    transition: all var(--transition-fast);
+    border-left: 3px solid transparent;
+}
+
+.mobileNavLink:hover {
+    color: var(--color-text-primary);
+    background-color: rgba(59, 130, 246, 0.1);
+    border-left-color: var(--color-accent-blue);
+}
+
+.mobileDonateBtn {
+    background-color: var(--color-accent-red);
+    color: white;
+    padding: 0.875rem 1.5rem;
+    margin: 1.5rem 1.5rem 1rem;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    font-size: 1rem;
+    text-align: center;
+    transition: all var(--transition-normal);
+}
+
+.mobileDonateBtn:hover {
+    background-color: var(--color-accent-red-hover);
+    box-shadow: 0 8px 16px rgba(239, 68, 68, 0.3);
+}
+
 /* Mobile Styles */
 @media (max-width: 968px) {
+
+    /* Hide desktop nav */
     .nav {
-        position: fixed;
-        top: 73px;
-        left: 0;
-        right: 0;
-        flex-direction: column;
-        background-color: var(--color-bg-secondary);
-        padding: 2rem;
-        gap: 1.5rem;
-        transform: translateY(-120%);
-        transition: transform var(--transition-normal);
-        border-bottom: 1px solid var(--color-border);
+        display: none;
     }
 
-    .navOpen {
-        transform: translateY(0);
-    }
-
+    /* Show hamburger menu */
     .menuToggle {
         display: flex;
+    }
+
+    /* Show mobile menu and overlay */
+    .mobileMenu,
+    .overlay {
+        display: block;
+    }
+
+    /* Hide donate button on mobile (it's in the drawer) */
+    .donateBtn {
+        display: none;
     }
 }
 
@@ -146,8 +248,8 @@
         height: 40px;
     }
 
-    .donateBtn {
-        padding: 0.6rem 1rem;
-        font-size: 0.85rem;
+    .mobileMenu {
+        width: 75%;
+        max-width: 320px;
     }
 }
