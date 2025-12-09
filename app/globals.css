@@ -1,3 +1,6 @@
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
 :root {
   /* Color Palette - Dark Theme */
   --color-bg-primary: #0a0e1a;
@@ -350,6 +353,3 @@ tbody tr:hover {
     padding: 0 1rem;
   }
 }
-
-/* Import Google Font */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
